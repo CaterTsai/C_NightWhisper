@@ -1,0 +1,8 @@
+ofxAnimatable
+ofxGui
+ofxJSON
+ofxLayerMask
+ofxNetwork
+ofxPostProcessing
+ofxTrueTypeFontUC
+ofxXmlSettings
