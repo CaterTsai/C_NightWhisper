@@ -5,13 +5,13 @@ void fourColorCircle::init()
 {
 	for (auto& iter : _colorCircleSet)
 	{
-		iter._colorCircle.init(ofVec3f(0), 200, ofRandom(60, 100), cFourColorNoteNumEach, 30);
-		iter._colorCircle.enableNoise(30);
+		iter._colorCircle.init(ofVec3f(0), 300, ofRandom(80, 120), cFourColorNoteNumEach, 40);
+		iter._colorCircle.enableNoise(60);
 	}
-	_colorCircleSet[0]._color.set(252, 0, 0, 128);
-	_colorCircleSet[1]._color.set(3, 240, 0, 128);
-	_colorCircleSet[2]._color.set(0, 15, 192, 128);
-	_colorCircleSet[3]._color.set(0, 0, 63);
+	_colorCircleSet[0]._color.set(252, 0, 0, 255);
+	_colorCircleSet[1]._color.set(3, 240, 0, 255);
+	_colorCircleSet[2]._color.set(0, 15, 192, 255);
+	_colorCircleSet[3]._color.set(0, 0, 255);
 }
 
 void fourColorCircle::update(float delta)
@@ -69,7 +69,7 @@ void fourColorCircle::onNote(midiNodeEvent e)
 
 string fourColorCircle::getInfo()
 {
-	return string();
+	return "[Draw]fourColorCircle";
 }
 
 #pragma endregion

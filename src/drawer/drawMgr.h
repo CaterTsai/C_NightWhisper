@@ -6,8 +6,8 @@
 
 class drawMgr {
 public:
-	drawMgr():
-		_isInit(false), _isStart(false), _drawIndex(0){
+	drawMgr() :
+		_isInit(false), _isStart(false), _drawIndex(0) {
 
 	}
 	void init()
@@ -15,7 +15,7 @@ public:
 		_drawList.push_back(ofPtr<fourColorCircle>(new fourColorCircle(48)));
 		_drawList.push_back(ofPtr<geometry>(new geometry()));
 		_drawList.push_back(ofPtr<circle>(new circle()));
-		
+
 		_isInit = true;
 	}
 
@@ -43,10 +43,15 @@ public:
 			return;
 		}
 
+		if (index < 0 || index >= _drawList.size())
+		{
+			ofLog(OF_LOG_WARNING, "[drawMgr::start]Index out of range");
+			return;
+		}
+
 		if (_isStart && index != _drawIndex)
 		{
 			_drawList[_drawIndex]->stop();
-
 		}
 		_isStart = true;
 		_drawIndex = index;
@@ -76,7 +81,7 @@ public:
 	string getMsg() {
 		if (!_isStart)
 		{
-			return "[Draw]1:Geometry 2:Circle";
+			return "[Menu]\n1:4-Color Circle\n2:Circle\n3:Geometry";
 		}
 		else
 		{

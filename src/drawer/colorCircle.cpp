@@ -54,8 +54,8 @@ void fourColorCircle::colorCircle::draw()
 
 	ofPushStyle();
 
-	//_mesh.draw();
-	_mesh.drawWireframe();
+	_mesh.draw();
+	//_mesh.drawWireframe();
 	ofPopStyle();
 }
 

@@ -170,8 +170,8 @@ geometry::geometry()
 
 void geometry::init()
 {
-	_dodecahedron.init(40, ofColor(255), ofColor(128));
-	_ballR = 300;
+	_dodecahedron.init(60, ofColor(255), ofColor(128));
+	_ballR = 450;
 	_rotV = 180;
 	_viewRotV = 20;
 	_rotAxis.set(1, 1, 0);

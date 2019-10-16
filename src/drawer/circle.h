@@ -34,7 +34,7 @@ public:
 public:
 	circle() :
 		drawBase(),
-		_raius(200),
+		_raius(500),
 		_rotD(0),
 		_rotV(5)
 	{};

@@ -8,8 +8,8 @@ void ofApp::setup() {
 	_follower.setup(2233);
 	initSpout();
 
-	_post.init(ofGetWidth(), ofGetHeight(), true);
-	_canvas.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+	_post.init(cOutputWidth, cOutputHeight, true);
+	_canvas.allocate(cOutputWidth, cOutputHeight, GL_RGBA);
 	_post.createPass<BloomPass>()->setEnabled(true);
 	_post.createPass<BloomPass>()->setEnabled(true);
 	_post.setFlip(false);
@@ -44,7 +44,7 @@ void ofApp::update() {
 void ofApp::draw() {
 
 #ifdef DRAW_TO_SPOUT
-	drawSpoutPreview(0, 0, 512, 384);
+	drawSpoutPreview(0, 0, 1024, 768);
 #else
 	_cam.begin();
 	_drawMgr.draw();
@@ -107,20 +107,16 @@ void ofApp::keyPressed(int key) {
 		_debugTimer = 0.0f;
 		break;
 	}
-	case '1': {
-		_drawMgr.start(0);
+	case '1':
+	case '2':
+	case '3':
+	case '4':
+	case '5':{
+		_drawMgr.start(key - '1');
 		break;
 	}
-	case '2': {
-		_drawMgr.start(1);
-		break;
-	}
-	case 'a': {
+	case '0': {
 		_drawMgr.stop();
-		break;
-	}
-	case 'z': {
-		//cc.triggerKey(rand()%7);
 		break;
 	}
 	}
@@ -130,7 +126,10 @@ void ofApp::drawScence()
 {
 	ofPushStyle();
 	_post.begin(_cam);
+	//_cam.begin();
 	_drawMgr.draw();
+	//_cam.end();
+
 	_post.end();
 	ofPopStyle();
 }
@@ -179,8 +178,8 @@ void ofApp::updateFollower(float delta)
 void ofApp::initSpout()
 {
 	char sendername[] = { "[NightWhisper]" };
-	_isSpoutInit = _spoutSender.CreateSender(sendername, ofGetWidth(), ofGetHeight());
-	_spoutCanvas.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+	_isSpoutInit = _spoutSender.CreateSender(sendername, cOutputWidth, cOutputHeight);
+	_spoutCanvas.allocate(cOutputWidth, cOutputHeight, GL_RGBA);
 }
 void ofApp::updateSpout()
 {
